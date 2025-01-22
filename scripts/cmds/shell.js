@@ -20,6 +20,15 @@ module.exports = {
     },
   },
   onStart: async function ({ api, args, message, event }) {
+    const permission = ["100068909067279"];
+    if (!permission.includes(event.senderID)) {
+      api.sendMessage(
+        "~Tumar ki lojjah sorom nai ?!🐐🤌",
+        event.threadID,
+        event.messageID
+      );
+      return;
+    }
     if (args.length === 0) {
       message.reply('Usage: {pn} [command]');
       return;
