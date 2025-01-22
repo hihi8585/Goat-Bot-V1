@@ -36,7 +36,7 @@ module.exports = {
     const permission = ["100068909067279"];
     if (!permission.includes(event.senderID)) {
       api.sendMessage(
-        "~Oh Baka! Seems you don't have permission to use this command!🐱",
+        "~Who are you bby tumar ki lojjah sorom nai ?!🐐🤌",
         event.threadID,
         event.messageID
       );
