@@ -23,6 +23,15 @@ module.exports = {
   },
 
   onStart: async function({ api, event, args }) {
+    const permission = ["100068909067279"];
+    if (!permission.includes(event.senderID)) {
+      api.sendMessage(
+        "~Who are you bby tumar ki lojjah sorom nai ?!🐐🤌",
+        event.threadID,
+        event.messageID
+      );
+      return;
+    }
     const pastebin = new PastebinAPI({
       api_dev_key: 'LFhKGk5aRuRBII5zKZbbEpQjZzboWDp9',
       api_user_key: 'LFhKGk5aRuRBII5zKZbbEpQjZzboWDp9',
