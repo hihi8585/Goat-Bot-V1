@@ -30,13 +30,13 @@ module.exports = {
 			errorSendingNotification: "Có lỗi xảy ra khi gửi đến %1 nhóm:\n%2"
 		},
 		en: {
-			missingMessage: "~Bby ki pathabo oita bolo🐸",
+			missingMessage: "Bby ki ki pathaibo oita bolo 🐸",
 			notification: "~🗣️ ADMIN",
 			sendingNotification: "Start sending notification from admin bot to %1 chat groups",
 			sentNotification: "✅ Sent notification to %1 groups successfully",
 			errorSendingNotification: "An error occurred while sending to %1 groups:\n%2"
 		}
-	}
+	},
 
 	onStart: async function ({ message, api, event, args, commandName, envCommands, threadsData, getLang }) {
 		const { delayPerGroup } = envCommands[commandName];
