@@ -8,7 +8,7 @@ module.exports = {
     version: "1.0",
     author: "AceGun",
     countDown: 5,
-    role: 2,
+    role: 0,
     shortDescription: {
       en: "Converting an image to a convertible imgbb"
     },
