@@ -1,3 +1,4 @@
+const { GoatWrapper } = require('fca-liane-utils');
 const fs = require('fs');
 module.exports = {
 	config: {
