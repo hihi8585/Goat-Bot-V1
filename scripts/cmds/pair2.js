@@ -60,7 +60,7 @@ const { loadImage, createCanvas } = require("canvas");
  var tile = djtme[Math.floor(Math.random() * djtme.length)];
 
  var background = [
- "https://i.ibb.co/RBRLmRt/Pics-Art-05-14-10-47-00.jpg"
+ "https://tinyurl.com/23apf67q.jpg"
  ];
 
  let getAvtmot = (
