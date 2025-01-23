@@ -1,46 +1,48 @@
-const destination = "100056927749389"; 
+const axios = require('axios');
+const FormData = require('form-data');
 
 module.exports = {
-	config: {
-		name: "catchpastebin",
-                aliases:["cpbin"],
-		version: 1.0,
-		author: "LiANE", 
-		countDown: 5,
-		role: 2,
-		shortDescription: { en: "Catch Pastebin" },
-		longDescription: { en: "Use this to catch pastebin" },
-		category: "𝗜𝗡𝗙𝗢",
-		guide: { en: "{pn}" }
-	},
-	onStart: async function ({ api, args, message, event, usersData }) {
-		const data = await usersData.get(event.senderID);
-		const name = data.name;
-		message.reply(`⚠ Pastebin Alert: How to use? Open the code file, and change the id destination to your userID, once the changes have been made, I can assure that this command will work correctly.`);
-	},
-	onChat: async function ({ api, args, message, usersData, threadsData, event }) {
-		const data = await usersData.get(event.senderID);
-		const name = data.name;
-		const thread = await threadsData.get(event.threadID);
-		const threadName = thread.threadName;
+  config: {
+    name: "imgbb",
+    aliases: ["i"],
+    version: "1.0",
+    author: "AceGun",
+    countDown: 5,
+    role: 2,
+    shortDescription: {
+      en: "Converting an image to a convertible imgbb"
+    },
+    longDescription: {
+      en: "Upload image to imgbb by replying to photo"
+    },
+    category: "tools",
+    guide: {
+      en: ""
+    }
+  },
 
-		const chat = event.body;
-		if (chat.includes(`pastebin.com`)) {
-			api.sendMessage(`⚠ Pastebin Alert:
-			» From: ${name}
-			» UID: ${event.senderID}
-			» Thread: ${threadName}
-			» GCID: ${event.threadID}
-			🔖 Content:
-			${event.body}`, 100056925549389);
+  onStart: async function ({ api, event }) {
+    const imgbbApiKey = "1b4d99fa0c3195efe42ceb62670f2a25"; // Replace "YOUR_API_KEY_HERE" with your actual API key
+    const linkanh = event.messageReply?.attachments[0]?.url;
+    if (!linkanh) {
+      return api.sendMessage('Please reply to an image.', event.threadID, event.messageID);
+    }
 
-			api.sendMessage(`⚠ Pastebin Alert:
-			» From: ${name}
-			» UID: ${event.senderID}
-			» Thread: ${threadName}
-			» GCID: ${event.threadID}
-			🔖 Content:
-			${event.body}`, destination);
-		}
-	}
+    try {
+      const response = await axios.get(linkanh, { responseType: 'arraybuffer' });
+      const formData = new FormData();
+      formData.append('image', Buffer.from(response.data, 'binary'), { filename: 'image.png' });
+      const res = await axios.post('https://api.imgbb.com/1/upload', formData, {
+        headers: formData.getHeaders(),
+        params: {
+          key: imgbbApiKey
+        }
+      });
+      const imageLink = res.data.data.url;
+      return api.sendMessage(imageLink, event.threadID, event.messageID);
+    } catch (error) {
+      console.log(error);
+      return api.sendMessage('Failed to upload image to imgbb.', event.threadID, event.messageID);
+    }
+  }
 };
