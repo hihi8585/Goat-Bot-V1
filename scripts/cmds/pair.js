@@ -54,7 +54,7 @@ module.exports = {
     var tile = djtme[Math.floor(Math.random() * djtme.length)];
 
     var background = [
-      "https://tinyurl.com/2db5bprw",
+      "https://i.ibb.co/z7dBvnJ/image.jpg",
       "",
       "",
     ];
