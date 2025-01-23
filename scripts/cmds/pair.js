@@ -54,9 +54,10 @@ module.exports = {
     var tile = djtme[Math.floor(Math.random() * djtme.length)];
 
     var background = [
-      "https://i.postimg.cc/wjJ29HRB/background1.png",
-      "https://i.postimg.cc/zf4Pnshv/background2.png",
-      "https://i.postimg.cc/5tXRQ46D/background3.png",
+      "https://tinyurl.com/27qrfpg8.png",
+      "https://tinyurl.com/22pctvpx.png",
+      "https://tinyurl.com/2cs9yj7g.png",
+      "https://tinyurl.com/2dyhv92j.png"
     ];
     var rd = background[Math.floor(Math.random() * background.length)];
     let getAvtmot = (
